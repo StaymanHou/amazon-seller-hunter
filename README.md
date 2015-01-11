@@ -37,7 +37,7 @@ When you finished using the application. Run `vagrant halt` to shut down the vir
 Once the virtual machine is up, you will be able to access the WebUI via http://192.168.33.19:8080 .
 
 ## Contributing
-We encourage you to contribute to Ruby on Rails! Before you make any pull request, please execute the commands below and make sure all tests pass.
+We encourage you to contribute to Amazon Seller Hunter! Before you make any pull request, please execute the commands below and make sure all tests pass.
 
 ```
 cd /path/to/amazon/seller/hunter
