@@ -1,0 +1,18 @@
+AllCops:
+  RunRailsCops: true
+
+Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 256
+
+AllCops:
+  Exclude:
+    - 'lib/tasks/cucumber.rake'
+    - 'bin/**/*'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+    - 'test/test_helper.rb'
+    - 'config/application.rb'
+    - 'db/schema.rb'
