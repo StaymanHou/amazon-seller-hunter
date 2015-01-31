@@ -1,5 +1,5 @@
 ## Welcome to Amazon Seller Hunter
-Amazon Seller Hunter is a Saas application that finds the best seller for any given paperback book (identified by ISBN). Users simply provide ISBN and desired condition (New/Used). Then the application will search for sellers on Amazon and return a best seller for that book based on a rule engine. The rule engine is primary composed of a set of rules. Each rule filters/scores sellers according to certain criteria. This application comes with a default rule set. Users will be able adjust the threshold value of each rule. Meanwile, developer will be able create/modify rules.
+Amazon Seller Hunter is a Saas application that finds the best seller for any given paperback book (identified by ISBN). Users simply provide ISBN and desired condition (New/Used). Then the application will search for sellers on Amazon and return a best seller for that book based on a rule engine. The rule engine is primarily composed of a set of rules. Each rule filters/scores sellers according to certain criteria. This application comes with a default rule set. Users will be able adjust the threshold value of each rule. Meanwile, developer will be able create/modify rules.
 
 #### The Default Rule Set
 * base score = price + shipping fee (if price < $35 then $4.98 else $0 for prime)
