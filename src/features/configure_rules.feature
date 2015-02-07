@@ -40,8 +40,8 @@ Feature: Configure rules
     Then I should be on the rule edit page of the 2nd rule
     And I should see "larger_than"
     When I fill in "larger_than" with "90"
-    And select "false" from "enabled"
-    And click "Save"
+    And I select "false" from "enabled"
+    And I click "Save"
     Then I should see "90"
     And I should see "false"
 
@@ -51,4 +51,4 @@ Feature: Configure rules
 
   Scenario: Update rules, enabled must be precent
     When I go to the rule edit page of the 2nd rule
-    The the "enabled" filed should be "enabled,disabled"
+    Then the "enabled" filed should be "enabled,disabled"

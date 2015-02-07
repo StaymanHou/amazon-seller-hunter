@@ -46,4 +46,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rubocop', require: false
   gem 'brakeman', require: false
+  gem 'factory_girl_rails'
 end
