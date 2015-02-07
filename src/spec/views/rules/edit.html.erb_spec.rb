@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "rules/edit", :type => :view do
   before(:each) do
-    @rule = assign(:rule, Rule.create!(
-      :name => "MyString",
-      :enabled => false,
-      :settings => ""
-    ))
+    @rule = assign(:rule, FactoryGirl.create(:rule))
   end
 
   it "renders the edit rule form" do
@@ -14,7 +10,7 @@ RSpec.describe "rules/edit", :type => :view do
 
     assert_select "form[action=?][method=?]", rule_path(@rule), "post" do
 
-      assert_select "input#rule_name[name=?]", "rule[name]"
+      assert_select "input#rule_name[name=?][disabled=disabled]", "rule[name]"
 
       assert_select "input#rule_enabled[name=?]", "rule[enabled]"
 

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Rule.create(
+  name: 'test',
+  enabled: true,
+  settings: {larger_than: 100}
+)

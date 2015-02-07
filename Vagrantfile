@@ -71,7 +71,7 @@ Vagrant.configure(2) do |config|
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
     echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
     sudo apt-get update
-    sudo apt-get install -y -q curl mysql-server libmysqlclient-dev nodejs mongodb-org mongodb-server mongodb-client
+    sudo apt-get install -y -q curl mysql-server libmysqlclient-dev nodejs mongodb-org mongodb-server mongodb-client git
     mysql -uroot -ppassword -e 'CREATE DATABASE amazon_seller_hunter_development'
     mysql -uroot -ppassword -e 'CREATE DATABASE amazon_seller_hunter_test'
     mysql -uroot -ppassword -e 'CREATE DATABASE amazon_seller_hunter_production'
