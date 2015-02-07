@@ -25,6 +25,7 @@ module AmazonSellerHunter
 
     config.generators do |g|
       g.fixture_replacement :factory_girl
+      g.orm :active_record
     end
   end
 end

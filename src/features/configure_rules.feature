@@ -9,14 +9,17 @@ Feature: Configure rules
       {
         "name": "default",
         "enabled": "true",
-        "larger_than": "100"
+        "settings": {
+          "larger_than": "100"
+        }
       }
       """
     And the 2nd rule
       """
       {
         "name": "useless",
-        "enabled": "true"
+        "enabled": "true",
+        "settings": {}
       }
       """
 

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Isbn:</strong>
+  <%= @hunt.isbn %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @hunt.condition %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @hunt.status %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @hunt.result %>
+</p>
+
+<%= link_to 'Edit', edit_hunt_path(@hunt) %> |
+<%= link_to 'Back', hunts_path %>

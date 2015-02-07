@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hunts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Isbn</th>
+      <th>Condition</th>
+      <th>Status</th>
+      <th>Result</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hunts.each do |hunt| %>
+      <tr>
+        <td><%= hunt.isbn %></td>
+        <td><%= hunt.condition %></td>
+        <td><%= hunt.status %></td>
+        <td><%= hunt.result %></td>
+        <td><%= link_to 'Show', hunt %></td>
+        <td><%= link_to 'Edit', edit_hunt_path(hunt) %></td>
+        <td><%= link_to 'Destroy', hunt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hunt', new_hunt_path %>

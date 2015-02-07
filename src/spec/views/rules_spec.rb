@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'rules/index', type: :view do
   it 'renders a list of rules with it\'s name, enabled & etc' do
-    assign(:rules, )
+    # assign(:rules, )
   end
 end
 
