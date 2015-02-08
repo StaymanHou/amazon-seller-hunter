@@ -11,8 +11,7 @@ AllCops:
   Exclude:
     - 'lib/tasks/cucumber.rake'
     - 'bin/**/*'
-    - 'spec/rails_helper.rb'
-    - 'spec/spec_helper.rb'
+    - 'spec/**/*'
     - 'test/test_helper.rb'
     - 'config/application.rb'
     - 'db/schema.rb'

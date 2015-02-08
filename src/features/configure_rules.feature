@@ -4,31 +4,31 @@ Feature: Configure rules
   I want to see a list of rule configurations and configure it
 
   Background: Have two rule
-    Given the 1st rule
+    Given the rule
       """
       {
         "name": "default",
-        "enabled": "true",
+        "enabled": true,
         "settings": {
           "larger_than": "100"
         }
       }
       """
-    And the 2nd rule
+    And the rule
       """
       {
         "name": "useless",
-        "enabled": "true",
+        "enabled": false,
         "settings": {}
       }
       """
 
   Scenario: List rules
     When I go to the home page
-    Then I should see "Configurations"
-    When I click "Configurations"
-    Then I should see "name"
-    And I should see "enabled"
+    Then I should see "Configure rules"
+    When I click "Configure rules"
+    Then I should see "Name"
+    And I should see "Enabled"
     And I should see "default"
     And I should see "useless"
     And I should see "true"
@@ -39,15 +39,11 @@ Feature: Configure rules
   Scenario: Update rules with valid value
     When I go to the rules list page
     Then I should see "Modify"
-    When I click the 2nd "Modify"
-    Then I should be on the rule edit page of the 2nd rule
-    And I should see "larger_than"
-    When I fill in "larger_than" with "90"
-    And I select "false" from "enabled"
+    When I click the 1st "Modify"
+    Then I should be on the rule edit page of the 1st rule
+    And I should see "Larger than"
+    When I fill in "Larger than" with "90"
+    And I uncheck "Enabled"
     And I click "Save"
-    Then I should see "90"
-    And I should see "false"
-
-  Scenario: Update rules, enabled must be precent
-    When I go to the rule edit page of the 2nd rule
-    Then the "enabled" filed should be "enabled,disabled"
+    Then the "Larger than" field should contain "90"
+    And the "Enabled" field should be unchecked

@@ -62,14 +62,15 @@ class RulesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rule
-      @rule = Rule.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def rule_params
-      permitted_settings = @rule.settings.keys.map { |key| key.to_sym }
-      params.require(:rule).permit(:enabled, :settings => permitted_settings)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_rule
+    @rule = Rule.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def rule_params
+    permitted_settings = @rule.settings.keys.map(&:to_sym)
+    params.require(:rule).permit(:enabled, settings: permitted_settings)
+  end
 end

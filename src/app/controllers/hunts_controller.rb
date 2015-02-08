@@ -62,13 +62,14 @@ class HuntsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_hunt
-      @hunt = Hunt.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def hunt_params
-      params.require(:hunt).permit(:isbn, :condition, :status, :result)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_hunt
+    @hunt = Hunt.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def hunt_params
+    params.require(:hunt).permit(:isbn, :condition, :status, :result)
+  end
 end

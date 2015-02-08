@@ -9,5 +9,5 @@
 Rule.create(
   name: 'test',
   enabled: true,
-  settings: {larger_than: '100'} # the values must be string
+  settings: { larger_than: '100' } # the values must be string
 )
