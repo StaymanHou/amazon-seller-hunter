@@ -14,7 +14,7 @@ RSpec.describe "rules/edit", :type => :view do
 
       assert_select "input#rule_enabled[name=?]", "rule[enabled]"
 
-      assert_select "input#rule_settings[name=?]", "rule[settings]"
+      assert_select "input#rule_settings_larger_than[name=?]", "rule[settings][larger_than]"
     end
   end
 end

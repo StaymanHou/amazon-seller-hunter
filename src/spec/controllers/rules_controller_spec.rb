@@ -24,11 +24,11 @@ RSpec.describe RulesController, :type => :controller do
   # Rule. As you add validations to Rule, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.attributes_for(:rule)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.attributes_for(:rule, :invalid)
   }
 
   # This should return the minimal set of values that should be in the session
@@ -44,20 +44,20 @@ RSpec.describe RulesController, :type => :controller do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested rule as @rule" do
-      rule = Rule.create! valid_attributes
-      get :show, {:id => rule.to_param}, valid_session
-      expect(assigns(:rule)).to eq(rule)
-    end
-  end
+  # describe "GET show" do
+  #   it "assigns the requested rule as @rule" do
+  #     rule = Rule.create! valid_attributes
+  #     get :show, {:id => rule.to_param}, valid_session
+  #     expect(assigns(:rule)).to eq(rule)
+  #   end
+  # end
 
-  describe "GET new" do
-    it "assigns a new rule as @rule" do
-      get :new, {}, valid_session
-      expect(assigns(:rule)).to be_a_new(Rule)
-    end
-  end
+  # describe "GET new" do
+  #   it "assigns a new rule as @rule" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:rule)).to be_a_new(Rule)
+  #   end
+  # end
 
   describe "GET edit" do
     it "assigns the requested rule as @rule" do
@@ -67,50 +67,50 @@ RSpec.describe RulesController, :type => :controller do
     end
   end
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Rule" do
-        expect {
-          post :create, {:rule => valid_attributes}, valid_session
-        }.to change(Rule, :count).by(1)
-      end
+  # describe "POST create" do
+  #   describe "with valid params" do
+  #     it "creates a new Rule" do
+  #       expect {
+  #         post :create, {:rule => valid_attributes}, valid_session
+  #       }.to change(Rule, :count).by(1)
+  #     end
 
-      it "assigns a newly created rule as @rule" do
-        post :create, {:rule => valid_attributes}, valid_session
-        expect(assigns(:rule)).to be_a(Rule)
-        expect(assigns(:rule)).to be_persisted
-      end
+  #     it "assigns a newly created rule as @rule" do
+  #       post :create, {:rule => valid_attributes}, valid_session
+  #       expect(assigns(:rule)).to be_a(Rule)
+  #       expect(assigns(:rule)).to be_persisted
+  #     end
 
-      it "redirects to the created rule" do
-        post :create, {:rule => valid_attributes}, valid_session
-        expect(response).to redirect_to(Rule.last)
-      end
-    end
+  #     it "redirects to the created rule" do
+  #       post :create, {:rule => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Rule.last)
+  #     end
+  #   end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved rule as @rule" do
-        post :create, {:rule => invalid_attributes}, valid_session
-        expect(assigns(:rule)).to be_a_new(Rule)
-      end
+  #   describe "with invalid params" do
+  #     it "assigns a newly created but unsaved rule as @rule" do
+  #       post :create, {:rule => invalid_attributes}, valid_session
+  #       expect(assigns(:rule)).to be_a_new(Rule)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:rule => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:rule => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        FactoryGirl.attributes_for(:rule, :valid)
       }
 
       it "updates the requested rule" do
         rule = Rule.create! valid_attributes
         put :update, {:id => rule.to_param, :rule => new_attributes}, valid_session
         rule.reload
-        skip("Add assertions for updated state")
+        expect(rule.settings['larger_than']).to eq(new_attributes[:settings]['larger_than'])
       end
 
       it "assigns the requested rule as @rule" do
@@ -122,7 +122,7 @@ RSpec.describe RulesController, :type => :controller do
       it "redirects to the rule" do
         rule = Rule.create! valid_attributes
         put :update, {:id => rule.to_param, :rule => valid_attributes}, valid_session
-        expect(response).to redirect_to(rule)
+        expect(response).to redirect_to(edit_rule_path(rule))
       end
     end
 
@@ -141,19 +141,19 @@ RSpec.describe RulesController, :type => :controller do
     end
   end
 
-  describe "DELETE destroy" do
-    it "destroys the requested rule" do
-      rule = Rule.create! valid_attributes
-      expect {
-        delete :destroy, {:id => rule.to_param}, valid_session
-      }.to change(Rule, :count).by(-1)
-    end
+  # describe "DELETE destroy" do
+  #   it "destroys the requested rule" do
+  #     rule = Rule.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => rule.to_param}, valid_session
+  #     }.to change(Rule, :count).by(-1)
+  #   end
 
-    it "redirects to the rules list" do
-      rule = Rule.create! valid_attributes
-      delete :destroy, {:id => rule.to_param}, valid_session
-      expect(response).to redirect_to(rules_url)
-    end
-  end
+  #   it "redirects to the rules list" do
+  #     rule = Rule.create! valid_attributes
+  #     delete :destroy, {:id => rule.to_param}, valid_session
+  #     expect(response).to redirect_to(rules_url)
+  #   end
+  # end
 
 end

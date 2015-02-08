@@ -42,7 +42,7 @@ class RulesController < ApplicationController
   def update
     respond_to do |format|
       if @rule.update(rule_params)
-        format.html { redirect_to @rule, notice: 'Rule was successfully updated.' }
+        format.html { redirect_to edit_rule_path(@rule), notice: 'Rule was successfully updated.' }
         format.json { render :show, status: :ok, location: @rule }
       else
         format.html { render :edit }
@@ -69,6 +69,7 @@ class RulesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rule_params
-      params.require(:rule).permit(:name, :enabled, :settings)
+      permitted_settings = @rule.settings.keys.map { |key| key.to_sym }
+      params.require(:rule).permit(:enabled, :settings => permitted_settings)
     end
 end

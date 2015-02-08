@@ -19,10 +19,14 @@
     <%= f.label :enabled %><br>
     <%= f.check_box :enabled %>
   </div>
-  <div class="field">
-    <%= f.label :settings %><br>
-    <%= f.text_field :settings %>
-  </div>
+  <%= f.fields_for :settings do |settings_fields| %>
+    <% @rule.settings.each do |key, value| %>
+      <div class="field">
+        <%= settings_fields.label key.to_sym %><br>
+        <%= settings_fields.text_field key.to_sym, value: value.to_s %>
+      </div>
+    <% end %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

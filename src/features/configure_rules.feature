@@ -48,10 +48,6 @@ Feature: Configure rules
     Then I should see "90"
     And I should see "false"
 
-  Scenario: Update rules, name must be precent and unique
-    When I go to the rule edit page of the 2nd rule
-    Then the "name" field should be disabled
-
   Scenario: Update rules, enabled must be precent
     When I go to the rule edit page of the 2nd rule
     Then the "enabled" filed should be "enabled,disabled"
