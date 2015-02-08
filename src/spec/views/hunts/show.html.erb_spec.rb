@@ -2,19 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "hunts/show", :type => :view do
   before(:each) do
-    @hunt = assign(:hunt, Hunt.create!(
-      :isbn => "Isbn",
-      :condition => 1,
-      :status => 2,
-      :result => "MyText"
-    ))
+    @hunt = assign(:hunt, FactoryGirl.create(:hunt))
   end
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/Isbn/)
-    expect(rendered).to match(/1/)
-    expect(rendered).to match(/2/)
-    expect(rendered).to match(/MyText/)
+    expect(rendered).to match(/978-0596514273/)
+    expect(rendered).to match(/new_book/)
+    expect(rendered).to match(/pending/)
   end
 end

@@ -19,7 +19,7 @@
         <td><%= hunt.isbn %></td>
         <td><%= hunt.condition %></td>
         <td><%= hunt.status %></td>
-        <td><%= hunt.result %></td>
+        <td><%= display_hunt_result(hunt) %></td>
         <td><%= link_to 'Show', hunt %></td>
       </tr>
     <% end %>

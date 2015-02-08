@@ -70,6 +70,6 @@ class HuntsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def hunt_params
-    params.require(:hunt).permit(:isbn, :condition, :status, :result)
+    params.require(:hunt).permit(:isbn, :condition)
   end
 end

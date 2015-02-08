@@ -17,8 +17,7 @@
 
 <p>
   <strong>Result:</strong>
-  <%= @hunt.result %>
+  <%= display_hunt_result(@hunt) %>
 </p>
 
-<%= link_to 'Edit', edit_hunt_path(@hunt) %> |
 <%= link_to 'Back', hunts_path %>
