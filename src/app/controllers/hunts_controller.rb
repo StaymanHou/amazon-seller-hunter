@@ -25,8 +25,6 @@ class HuntsController < ApplicationController
   # POST /hunts.json
   def create
     @hunt = Hunt.new(hunt_params)
-    @hunt.result = '{}'
-    @hunt.status = :pending
 
     respond_to do |format|
       if @hunt.save

@@ -15,4 +15,4 @@ AllCops:
     - 'test/test_helper.rb'
     - 'config/application.rb'
     - 'db/schema.rb'
-    - 'features/*.rb'
+    - 'features/**/*'
