@@ -24,11 +24,11 @@ RSpec.describe HuntsController, :type => :controller do
   # Hunt. As you add validations to Hunt, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    FactoryGirl.attributes_for(:hunt)
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    FactoryGirl.attributes_for(:hunt, :invalid)
   }
 
   # This should return the minimal set of values that should be in the session
@@ -59,13 +59,13 @@ RSpec.describe HuntsController, :type => :controller do
     end
   end
 
-  describe "GET edit" do
-    it "assigns the requested hunt as @hunt" do
-      hunt = Hunt.create! valid_attributes
-      get :edit, {:id => hunt.to_param}, valid_session
-      expect(assigns(:hunt)).to eq(hunt)
-    end
-  end
+  # describe "GET edit" do
+  #   it "assigns the requested hunt as @hunt" do
+  #     hunt = Hunt.create! valid_attributes
+  #     get :edit, {:id => hunt.to_param}, valid_session
+  #     expect(assigns(:hunt)).to eq(hunt)
+  #   end
+  # end
 
   describe "POST create" do
     describe "with valid params" do
@@ -100,60 +100,60 @@ RSpec.describe HuntsController, :type => :controller do
     end
   end
 
-  describe "PUT update" do
-    describe "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+  # describe "PUT update" do
+  #   describe "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
 
-      it "updates the requested hunt" do
-        hunt = Hunt.create! valid_attributes
-        put :update, {:id => hunt.to_param, :hunt => new_attributes}, valid_session
-        hunt.reload
-        skip("Add assertions for updated state")
-      end
+  #     it "updates the requested hunt" do
+  #       hunt = Hunt.create! valid_attributes
+  #       put :update, {:id => hunt.to_param, :hunt => new_attributes}, valid_session
+  #       hunt.reload
+  #       skip("Add assertions for updated state")
+  #     end
 
-      it "assigns the requested hunt as @hunt" do
-        hunt = Hunt.create! valid_attributes
-        put :update, {:id => hunt.to_param, :hunt => valid_attributes}, valid_session
-        expect(assigns(:hunt)).to eq(hunt)
-      end
+  #     it "assigns the requested hunt as @hunt" do
+  #       hunt = Hunt.create! valid_attributes
+  #       put :update, {:id => hunt.to_param, :hunt => valid_attributes}, valid_session
+  #       expect(assigns(:hunt)).to eq(hunt)
+  #     end
 
-      it "redirects to the hunt" do
-        hunt = Hunt.create! valid_attributes
-        put :update, {:id => hunt.to_param, :hunt => valid_attributes}, valid_session
-        expect(response).to redirect_to(hunt)
-      end
-    end
+  #     it "redirects to the hunt" do
+  #       hunt = Hunt.create! valid_attributes
+  #       put :update, {:id => hunt.to_param, :hunt => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(hunt)
+  #     end
+  #   end
 
-    describe "with invalid params" do
-      it "assigns the hunt as @hunt" do
-        hunt = Hunt.create! valid_attributes
-        put :update, {:id => hunt.to_param, :hunt => invalid_attributes}, valid_session
-        expect(assigns(:hunt)).to eq(hunt)
-      end
+  #   describe "with invalid params" do
+  #     it "assigns the hunt as @hunt" do
+  #       hunt = Hunt.create! valid_attributes
+  #       put :update, {:id => hunt.to_param, :hunt => invalid_attributes}, valid_session
+  #       expect(assigns(:hunt)).to eq(hunt)
+  #     end
 
-      it "re-renders the 'edit' template" do
-        hunt = Hunt.create! valid_attributes
-        put :update, {:id => hunt.to_param, :hunt => invalid_attributes}, valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
+  #     it "re-renders the 'edit' template" do
+  #       hunt = Hunt.create! valid_attributes
+  #       put :update, {:id => hunt.to_param, :hunt => invalid_attributes}, valid_session
+  #       expect(response).to render_template("edit")
+  #     end
+  #   end
+  # end
 
-  describe "DELETE destroy" do
-    it "destroys the requested hunt" do
-      hunt = Hunt.create! valid_attributes
-      expect {
-        delete :destroy, {:id => hunt.to_param}, valid_session
-      }.to change(Hunt, :count).by(-1)
-    end
+  # describe "DELETE destroy" do
+  #   it "destroys the requested hunt" do
+  #     hunt = Hunt.create! valid_attributes
+  #     expect {
+  #       delete :destroy, {:id => hunt.to_param}, valid_session
+  #     }.to change(Hunt, :count).by(-1)
+  #   end
 
-    it "redirects to the hunts list" do
-      hunt = Hunt.create! valid_attributes
-      delete :destroy, {:id => hunt.to_param}, valid_session
-      expect(response).to redirect_to(hunts_url)
-    end
-  end
+  #   it "redirects to the hunts list" do
+  #     hunt = Hunt.create! valid_attributes
+  #     delete :destroy, {:id => hunt.to_param}, valid_session
+  #     expect(response).to redirect_to(hunts_url)
+  #   end
+  # end
 
 end

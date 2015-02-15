@@ -8,7 +8,7 @@ RSpec.describe "hunts/show", :type => :view do
   it "renders attributes in <p>" do
     render
     expect(rendered).to match(/978-0596514273/)
-    expect(rendered).to match(/new_book/)
-    expect(rendered).to match(/pending/)
+    expect(rendered).to match(/New book/)
+    expect(rendered).to match(/Pending/)
   end
 end

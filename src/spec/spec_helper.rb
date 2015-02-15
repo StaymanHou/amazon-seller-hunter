@@ -39,16 +39,25 @@ RSpec.configure do |config|
   end
 
   config.before(:suite) do
-    DatabaseCleaner[:mongoid].strategy = :truncation
-    DatabaseCleaner[:mongoid].clean_with(:truncation)
+    mongo_tables = %w(rules)
+    DatabaseCleaner[:active_record].strategy = :transaction
+    DatabaseCleaner[:active_record].clean_with(:truncation, except: mongo_tables)
+    DatabaseCleaner[:mongoid].strategy = :truncation, { only: mongo_tables }
+    DatabaseCleaner[:mongoid].clean_with(:truncation, { only: mongo_tables })
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner[:active_record].cleaning do
+      example.run
+    end
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
+    DatabaseCleaner[:mongoid].start
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
+    DatabaseCleaner[:mongoid].clean
   end
 
 # The settings below are suggested to provide a good initial experience

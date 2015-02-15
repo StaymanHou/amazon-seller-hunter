@@ -15,21 +15,8 @@ RSpec.describe HuntsController, :type => :routing do
       expect(:get => "/hunts/1").to route_to("hunts#show", :id => "1")
     end
 
-    it "routes to #edit" do
-      expect(:get => "/hunts/1/edit").to route_to("hunts#edit", :id => "1")
-    end
-
     it "routes to #create" do
       expect(:post => "/hunts").to route_to("hunts#create")
     end
-
-    it "routes to #update" do
-      expect(:put => "/hunts/1").to route_to("hunts#update", :id => "1")
-    end
-
-    it "routes to #destroy" do
-      expect(:delete => "/hunts/1").to route_to("hunts#destroy", :id => "1")
-    end
-
   end
 end

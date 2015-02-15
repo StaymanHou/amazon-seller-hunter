@@ -3,16 +3,16 @@ FactoryGirl.define do
     name 'default'
     enabled true
     settings { {'larger_than' => '100'} }
-  end
 
-  trait :invalid do
-    enabled nil
-  end
+    trait :invalid do
+      enabled nil
+    end
 
-  trait :valid do
-    settings { {'larger_than' => '90'} }
-  end
+    trait :valid do
+      settings { {'larger_than' => '90'} }
+    end
 
-  factory :invalid_rule, traits: [:invalid]
-  factory :valid_rule, traits: [:valid]
+    factory :invalid_rule, traits: [:invalid]
+    factory :valid_rule, traits: [:valid]
+  end
 end

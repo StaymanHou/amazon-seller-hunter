@@ -12,14 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :isbn %><br>
+    <%= f.label :isbn, 'ISBN' %><br>
     <%= f.text_field :isbn %>
   </div>
   <div class="field">
     <%= f.label :condition %><br>
-    <%= f.number_field :condition %>
+    <%= f.select :condition, Hunt.conditions.keys.to_a.map { |w| [w.humanize, w] } %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Start' %>
   </div>
 <% end %>

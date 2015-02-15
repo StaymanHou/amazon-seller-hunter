@@ -12,7 +12,7 @@ RSpec.describe "hunts/new", :type => :view do
 
       assert_select "input#hunt_isbn[name=?]", "hunt[isbn]"
 
-      assert_select "input#hunt_condition[name=?]", "hunt[condition]"
+      assert_select "select#hunt_condition[name=?]", "hunt[condition]"
 
       assert_select "input#hunt_status[name=?]", "hunt[status]", :count => 0
 

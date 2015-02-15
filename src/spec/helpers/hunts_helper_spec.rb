@@ -13,10 +13,10 @@ require 'rails_helper'
 RSpec.describe HuntsHelper, :type => :helper do
   let(:hunt) { FactoryGirl.create(:hunt) }
   let(:failed_hunt) { FactoryGirl.create(:hunt, isbn: '1449357016', condition: 1, status: 3, result: '{"error_message": "Can not find any seller meets our criteria"}') }
-  let(:finished_hunt) { FactoryGirl.create(:hunt, isbn: '1449357016', condition: 1, status: 2, result: '{"seller_name": "pbshop", "product_url": "http://www.amazon.com/gp/product/1449335837/ref=ox_sc_sfl_title_1?ie=UTF8&psc=1&smid=AGLPMRINU0Q3T"}') }
-  let(:invalid_result_hunt) { FactoryGirl.create(:hunt, result: '') }
+  let(:succedded_hunt) { FactoryGirl.create(:hunt, isbn: '1449357016', condition: 1, status: 2, result: '{"seller_name": "pbshop", "product_url": "http://www.amazon.com/gp/product/1449335837/ref=ox_sc_sfl_title_1?ie=UTF8&psc=1&smid=AGLPMRINU0Q3T"}') }
+  let(:invalid_result_hunt) { FactoryGirl.create(:hunt, status: 2, result: '') }
 
-  describe '#display_hunt_result(hunt)' do
+  describe '#display_hunt_result(hunt[, :brief])' do
     it 'returns empty string if the hunt is pending' do
       expect(helper.display_hunt_result(hunt)).to eq ''
     end
@@ -29,8 +29,18 @@ RSpec.describe HuntsHelper, :type => :helper do
       expect(helper.display_hunt_result(failed_hunt)).to eq 'Can not find any seller meets our criteria'
     end
 
-    it 'returns the <a href="?">seller_name</a> string if the hunt finished' do
-      expect(helper.display_hunt_result(finished_hunt)).to eq '<a href="http://www.amazon.com/gp/product/1449335837/ref=ox_sc_sfl_title_1?ie=UTF8&psc=1&smid=AGLPMRINU0Q3T">pbshop</a>'
+    it 'returns the <a href="?">seller_name</a> string if the hunt succedded' do
+      expect(helper.display_hunt_result(succedded_hunt)).to eq '<a target="_blank" href="http://www.amazon.com/gp/product/1449335837/ref=ox_sc_sfl_title_1?ie=UTF8&amp;psc=1&amp;smid=AGLPMRINU0Q3T">pbshop</a>'
+    end
+  end
+
+  describe '#display_hunt_result(hunt, :detail)' do
+    it 'returns the error_message string with the preceeding label if the hunt failed' do
+      expect(helper.display_hunt_result(failed_hunt, :detail)).to eq 'Error Message: Can not find any seller meets our criteria'
+    end
+
+    it 'returns the <a href="?">seller_name</a> string if the hunt succedded' do
+      expect(helper.display_hunt_result(succedded_hunt, :detail)).to eq 'Seller Name: pbshop Product Url: http://www.amazon.com/gp/product/1449335837/ref=ox_sc_sfl_title_1?ie=UTF8&psc=1&smid=AGLPMRINU0Q3T'
     end
   end
 end

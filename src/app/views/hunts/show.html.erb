@@ -7,17 +7,17 @@
 
 <p>
   <strong>Condition:</strong>
-  <%= @hunt.condition %>
+  <%= @hunt.condition.humanize %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @hunt.status %>
+  <%= @hunt.status.humanize %>
 </p>
 
 <p>
-  <strong>Result:</strong>
-  <%= display_hunt_result(@hunt) %>
+  <strong>Result:</strong><br/>
+  <%= display_hunt_result(@hunt, :detail) %>
 </p>
 
 <%= link_to 'Back', hunts_path %>

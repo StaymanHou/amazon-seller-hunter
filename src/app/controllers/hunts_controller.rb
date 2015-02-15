@@ -4,7 +4,7 @@ class HuntsController < ApplicationController
   # GET /hunts
   # GET /hunts.json
   def index
-    @hunts = Hunt.all
+    @hunts = Hunt.order(created_at: :desc).page params[:page]
   end
 
   # GET /hunts/1
@@ -25,6 +25,8 @@ class HuntsController < ApplicationController
   # POST /hunts.json
   def create
     @hunt = Hunt.new(hunt_params)
+    @hunt.result = '{}'
+    @hunt.status = :pending
 
     respond_to do |format|
       if @hunt.save
