@@ -34,7 +34,12 @@ Bootstrap the virtual machine in which the application will run. Run `vagrant up
 When you finished using the application. Run `vagrant halt` to shut down the virtual machine.
 
 ## Usage
-Once the virtual machine is up, you will be able to access the WebUI via http://192.168.33.19:8080 .
+If it your first time booting the box, once the virtual machine is up, you will be able to access the WebUI via http://192.168.33.19:8080 .
+After the first time, you will need to run the following commands after your box booting up.
+```
+bundle exec sidekiq -d high,5 default -e production
+bundle exec unicorn -D -E production
+```
 
 ## Contributing
 We encourage you to contribute to Amazon Seller Hunter! Before you make any pull request, please execute the commands below and make sure all tests pass.

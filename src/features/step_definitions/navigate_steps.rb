@@ -27,7 +27,7 @@ Then(/^I should be on the show details page of the (\d+)(?:st|nd|rd|th) hunting$
   current_path.should eq hunt_path(@hunts[index])
 end
 
-Then(/^I should be on the (\d+)nd page of the hunting list$/) do |page_number|
+Then(/^I should be on the (\d+)(?:st|nd|rd|th) page of the hunting list$/) do |page_number|
   current_url.should eq hunts_url(page: page_number)
 end
 

@@ -6,11 +6,16 @@ class Hunt < ActiveRecord::Base
     message: 'only allows ISBN-13 or ISBN-10'
   }
   after_initialize :default_values
+  after_create :start_hunter
 
   private
 
   def default_values
     self.status ||=  :pending
     self.result ||= '{}'
+  end
+
+  def start_hunter
+    Hunter.perform_async(id)
   end
 end

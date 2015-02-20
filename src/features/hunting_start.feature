@@ -14,4 +14,4 @@ Feature: Start hunting
     Then I should be on the show details page of the 1st hunting
     And I should see "1234567890"
     And I should see "New book"
-    And background job should start
+    And hunter should go async

@@ -31,6 +31,10 @@ gem 'unicorn'
 
 gem 'kaminari'
 
+gem 'sidekiq'
+
+gem 'sinatra'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

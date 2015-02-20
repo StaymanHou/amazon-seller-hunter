@@ -1,3 +1,3 @@
-Then(/^background job should start$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^hunter should go async$/) do
+  expect(Hunter.jobs.size).to be >= 1
 end
