@@ -27,5 +27,7 @@ module AmazonSellerHunter
       g.fixture_replacement :factory_girl
       g.orm :active_record
     end
+
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
