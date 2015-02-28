@@ -1,0 +1,3 @@
+class RuleProto
+  
+end
