@@ -1,4 +1,5 @@
 class Seller
+  include Comparable
   attr_accessor :name, :id, :price, :shipping_fee, :prime, :free_shipping_over, :rate, :total_ratings, :in_stock, :ships_from, :score
 
   def initialize(name, id, price, shipping_fee, prime, free_shipping_over, rate, total_ratings, in_stock, ships_from)
@@ -13,5 +14,9 @@ class Seller
     @in_stock = in_stock
     @ships_from = ships_from
     @score = 100
+  end
+
+  def <=>(another_seller)
+    another_seller.score <=> @score
   end
 end
