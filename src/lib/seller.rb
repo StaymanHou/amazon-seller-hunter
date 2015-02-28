@@ -1,5 +1,5 @@
 class Seller
-  attr_accessor :name, :id, :price, :shipping_fee, :prime, :free_shipping_over, :rate, :total_ratings, :in_stock, :ships_from
+  attr_accessor :name, :id, :price, :shipping_fee, :prime, :free_shipping_over, :rate, :total_ratings, :in_stock, :ships_from, :score
 
   def initialize(name, id, price, shipping_fee, prime, free_shipping_over, rate, total_ratings, in_stock, ships_from)
     @name = name
@@ -12,5 +12,6 @@ class Seller
     @total_ratings = total_ratings
     @in_stock = in_stock
     @ships_from = ships_from
+    @score = 100
   end
 end

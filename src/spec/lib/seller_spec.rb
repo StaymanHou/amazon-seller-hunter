@@ -25,6 +25,7 @@ RSpec.describe Seller do
       expect(seller.total_ratings).to eq total_ratings
       expect(seller.in_stock).to eq in_stock
       expect(seller.ships_from).to eq ships_from
+      expect(seller.score).to eq 100
     end
   end
 end
