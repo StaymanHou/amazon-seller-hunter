@@ -16,7 +16,7 @@ class Seller
     @score = 100
   end
 
-  def <=>(another_seller)
-    another_seller.score <=> @score
+  def <=>(other)
+    other.score <=> @score
   end
 end

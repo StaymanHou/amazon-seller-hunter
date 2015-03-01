@@ -4,6 +4,9 @@ AllCops:
 Documentation:
   Enabled: false
 
+Style/ClassVars:
+  Enabled: false
+
 Metrics/LineLength:
   Max: 256
 

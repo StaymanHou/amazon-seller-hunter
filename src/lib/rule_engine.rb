@@ -3,14 +3,14 @@ module RuleEngine
   end
 
   def self.pick_best(sellers)
-    raise RuleEngineError.new('I can\'t do anything if you give me a empty array of sellers.') if sellers.empty?
+    fail RuleEngineError, 'I can\'t do anything if you give me a empty array of sellers.' if sellers.empty?
     @@sellers = sellers
     set_rules
     @@rules.each do |rule|
       filter_sellers(rule)
       score_sellers(rule)
     end
-    raise RuleEngineError.new('All the sellers have been filtered. Consider loose the rules.') if @@sellers.empty?
+    fail RuleEngineError, 'All the sellers have been filtered. Consider loose the rules.' if @@sellers.empty?
     @@sellers.min_by(&:score)
   end
 
@@ -23,8 +23,7 @@ module RuleEngine
   def self.set_rules
     return if (defined? @@rules) && @@rules
     @@rules = []
-    rules = Rule.all
-    rules.each do |rule|
+    Rule.all.each do |rule|
       next unless rule.enabled
       require my_path + "/rules/#{rule.name}"
       rule_class_name = rule.name.camelize
