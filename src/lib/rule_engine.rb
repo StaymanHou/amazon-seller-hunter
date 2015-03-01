@@ -21,10 +21,11 @@ module RuleEngine
   end
 
   def self.set_rules
-    return if defined? @@rules
+    return if (defined? @@rules) && @@rules
     @@rules = []
     rules = Rule.all
     rules.each do |rule|
+      next unless rule.enabled
       require my_path + "/rules/#{rule.name}"
       rule_class_name = rule.name.camelize
       rule_class = Object.const_get(rule_class_name)
