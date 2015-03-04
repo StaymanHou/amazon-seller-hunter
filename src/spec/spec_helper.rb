@@ -18,6 +18,7 @@
 require 'sidekiq/testing'
 Sidekiq::Testing.fake!
  
+require 'webmock/rspec'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

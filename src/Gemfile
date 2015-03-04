@@ -35,6 +35,10 @@ gem 'sidekiq'
 
 gem 'sinatra'
 
+gem 'rest-client'
+
+gem 'webmock'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
