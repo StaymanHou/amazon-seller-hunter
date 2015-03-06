@@ -15,7 +15,7 @@ module SellerCollecter
       prime = !seller_html_element.xpath('./div[1]/span[contains(@class, "supersaver")]').empty?
       shipping_fee = prime ? 3.99 : seller_html_element.xpath('./div[1]/p/span/span[1]').first.text.strip[1..-1].to_f
       free_shipping_over = nil
-      rate = flag_seller_is_amazon ? 1 : seller_html_element.xpath('./div[3]/p[2]/a').first.text.split('%').first.to_f/100
+      rate = flag_seller_is_amazon ? 1 : seller_html_element.xpath('./div[3]/p[2]/a').first.text.split('%').first.to_f / 100
       total_ratings = flag_seller_is_amazon ? Float::INFINITY : /\((\d+(?:,\d+)*) (?:rating|total ratings)\)/.match(seller_html_element.xpath('./div[3]/p[2]').first.text)[1].split(',').join('').to_i
       in_stock = seller_html_element.xpath('./div[4]').first.text.include? 'In Stock'
       if flag_seller_is_amazon
@@ -36,18 +36,18 @@ module SellerCollecter
     amazon_product_list_url = build_product_list_url(isbn, condition)
     begin
       tries ||= 10
-      page_html = RestClient.get amazon_product_list_url
+      page_html = RestClient.get amazon_product_list_url, user_agent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0'
     rescue RestClient::ServiceUnavailable
       sleep 1
       tries -= 1
       if tries > 0
         retry
       else
-        fail SellerCollecterError, 'can not get the product list page'
+        raise SellerCollecterError, 'can not get the product list page'
       end
     end
     page = Nokogiri::HTML(page_html)
     seller_html_elements = page.css('html>body>div>div>div>div>div>div.olpOffer')
-    seller_html_elements.map{ |seller_html_element| SellerParser::parse(seller_html_element) }
+    seller_html_elements.map { |seller_html_element| SellerParser.parse(seller_html_element) }
   end
 end
