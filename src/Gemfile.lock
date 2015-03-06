@@ -299,6 +299,7 @@ DEPENDENCIES
   kaminari
   mongoid
   mysql2
+  nokogiri
   rails (= 4.2.0)
   rest-client
   rspec-rails (~> 3.0)

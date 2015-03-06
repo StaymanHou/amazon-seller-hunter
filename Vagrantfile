@@ -84,8 +84,7 @@ Vagrant.configure(2) do |config|
     bundle exec rake db:seed
     RAILS_ENV=production bundle exec rake db:migrate
     RAILS_ENV=production bundle exec rake db:seed
-    RAILS_ENV=production bundle exec rake assets:precompile
-    bundle exec sidekiq -d high,5 default -e production
-    bundle exec unicorn -D -E production
+    bundle exec sidekiq -d high,5 default -e development
+    bundle exec rails s -p 8080 -b 0.0.0.0 -e development -d
   SHELL
 end
