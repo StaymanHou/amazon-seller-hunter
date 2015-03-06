@@ -3,6 +3,7 @@ class Hunter
   include AmazonHelper
 
   def perform(hunt_id)
+    sleep 1
     setup_work(hunt_id)
     find_best_seller
     return unless (defined? @best_seller) && @best_seller

@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Start a new hunting', new_hunt_path %>
+<%= link_to 'Start a new hunting', new_hunt_path, class: 'btn btn-default' %>
 
 <h1>Listing Hunts</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Isbn</th>
@@ -22,7 +22,7 @@
         <td><%= hunt.condition.humanize %></td>
         <td><%= hunt.status.humanize %></td>
         <td><%= display_hunt_result(hunt) %></td>
-        <td><%= link_to 'show details', hunt %></td>
+        <td><%= link_to 'show details', hunt, class: 'btn btn-default btn-xs' %></td>
       </tr>
     <% end %>
   </tbody>

@@ -20,6 +20,6 @@
     <%= f.select :condition, Hunt.conditions.keys.to_a.map { |w| [w.humanize, w] } %>
   </div>
   <div class="actions">
-    <%= f.submit 'Start' %>
+    <%= f.submit 'Start', class: 'btn btn-primary' %>
   </div>
 <% end %>
